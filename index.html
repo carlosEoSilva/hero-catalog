@@ -1,0 +1,92 @@
+<head>
+    <!-- google fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron&family=Teko:wght@300&display=swap" rel="stylesheet">    <!-- reset css -->
+
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+
+    <!-- meu css -->
+    <link rel="stylesheet" type="text/css" href="css/reset.css">
+    <link rel="stylesheet" type="text/css" href="css/index.css">
+    
+    <!-- meu script -->
+    <!-- <script type="text/javascript" src="../script/objects.js" defer></script> -->
+    <!-- <script type="text/javascript" src="../script/index.js" defer></script> -->
+    <script type="text/javascript" src="script/indexAPI.js" defer></script>
+</head>
+
+<body>
+<div class="page-body">
+
+    <header class="cabecalho">
+        <img class="mask" src="img/mask.png"/>
+        <div class="header-text">
+            <p>UNIVERSAL</p>
+            <h4>SUPER HEROES</h4>
+            <p>COLLECTION</p>
+        </div>
+    </header>
+
+    <main>
+        <!-- menu -->
+        <div id="form-id">
+            <form>
+                <div id="inner-form">
+                    <label id="add">Adicionar |</label>
+                    
+                    <input type="text" id="fname" name="fname" size="15" placeholder="NOME...">
+                    
+                    <select id="attribute" name="">
+                        <option value=" ">ATRIBUTO</option>
+                        <option value="intelligence">INTELIGÊNCIA</option>
+                        <option value="strength">FORÇA</option>
+                        <option value="speed">VELOCIDADE</option>
+                        <option value="durability">RESISTÊNCIA</option>
+                        <option value="height">ALTURA</option>
+                        <option value="weight">PESO</option>
+                    </select>
+        
+                    <select id="compare" name="">
+                        <option value=">">MAIOR QUE...</option>
+                        <option value="===">IGUAL A...</option>
+                        <option value="<">MENOR QUE...</option>
+                    </select>
+        
+                    <input type="text" id="fvalue" name="fname" size="4" placeholder="VAZIO">
+        
+                    <label class="filtrar" id="filter">Filtrar</label>
+                    </div>
+                    
+            </form>
+        </div>
+    
+        <!-- modal -->
+        <dialog open>
+            <div class="modal-container">
+                <img class="modal-image" src="https://blog.emania.com.br/wp-content/webp-express/webp-images/doc-root/wp-content/uploads/2016/02/direitos-autorais-e-de-imagem-1024x683.jpg.webp" alt="Avatar" class="w3-left w3-circle">
+
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h3>Nome</h3>
+                    </div>
+
+                    <div class="modal-body">
+                        <h3>Lorem ipsum dolor sit amet consectetur adipisicing elit. Delectus odio obcaecati perferendis repellat, provident impedit at placeat natus.</h3>
+                    </div>
+                </div>
+            </div>
+            <button class="btn-close-modal w3-button w3-light-green w3-hover-red w3-round-xxlarge">Fechar</button>
+        </dialog>
+
+        <!-- cards -->
+        <div class="grid-container"></div>
+
+    </main>
+
+</div>
+    <footer>
+        <p id="p-footer"><span class="s-footer">SPEED TO HERO 2022</span> - No Rights Reserved!</p>
+    </footer>
+
+</body>
