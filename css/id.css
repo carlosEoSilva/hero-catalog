@@ -1,0 +1,26 @@
+
+#p-footer{
+    font-family: 'Orbitron', sans-serif;
+    text-shadow: -3px 3px rgb(90 92 2), -6px 6px rgb(3 36 73);
+    color: #ffff;
+    position: relative;
+    top: 280px;
+    font-size: 20px;
+}
+
+#form-id{
+    padding: 2% auto;
+}
+
+#inner-form{
+    display: inline-block;
+    padding: 50px 0px;
+    margin: auto;
+    width: 100%;
+}
+
+#add:hover{
+    animation-name: blinkRed;
+    animation-duration: 0.5s;
+    animation-iteration-count: infinite;
+}

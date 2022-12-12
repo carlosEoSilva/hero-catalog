@@ -1,0 +1,39 @@
+
+@keyframes blink{
+    from{
+        color: grey;
+        font-weight: bolder;
+        text-shadow: -2px -2px white; 
+        font-size: 30px;
+    }
+    to{
+        color: rgb(36, 243, 9);
+        font-weight: bolder;
+        text-shadow: -2px -2px rgb(219, 243, 5); 
+        font-size: 30px;
+    }
+}
+
+@keyframes blinkRed{
+    from{
+        color: grey;
+        font-weight: bolder;
+        text-shadow: -2px -2px white; 
+        font-size: 30px;
+    }
+    to{
+        color: rgb(187, 5, 5);
+        font-weight: bolder;
+        text-shadow: -2px -2px rgb(11, 12, 0); 
+        font-size: 30px;
+    }
+}
+
+@keyframes spin{
+    from {
+        transform:rotate(0deg);
+    }
+    to {
+        transform:rotate(360deg);
+    }
+}

@@ -12,7 +12,6 @@ class PaginaHerois {
     this.btnFilter = this.container.querySelector("#filter"); 
     this.btnAdd= this.container.querySelector("#add");
     this.heroNameField= this.container.querySelector("#fname");
-    // this.inputAttrNumber= this.container.querySelector("#fvalue");
     this.heroGender= this.container.querySelector("#fvalue");
     this.modalContainer= '';
 
@@ -27,7 +26,7 @@ class PaginaHerois {
       _self.applyFilterHeroes();
     } 
 
-    //evento de clique no botão ADICIONAR
+    //evento de clique no botão TODOS
     this.btnAdd.onclick= function(event){
       event.preventDefault();
       _self.clearPage();
@@ -48,11 +47,6 @@ class PaginaHerois {
       _self.modal.show();
     }
 
-    // evento para fechar o modal
-    // this.btnCloseModal.onclick= function(event){
-    //   _self.modal.close();
-    // }
-
     //preencher a pagina inicial
     _self.heroCall(url);
   }
@@ -69,88 +63,17 @@ heroCall(_url){
     })
 }
 
-// //aplicar filtros de busca por parâmetros de atributos
-// applyFilterHeroes() {  
-//     let filteredHeroes= []; 
-//     let attrValue= Number(this.inputAttrNumber.value);
-//     let heroName= this.heroNameField.value.toLowerCase();
-//     let attribute= this.container.querySelector("#attribute").value;
-//     let comparison= this.container.querySelector("#compare").value;
-
-//     if(heroName && attrValue){
-//       switch(comparison){
-//         case '===':
-//           filteredHeroes= heroes.filter((_hero)=>{
-//             return _hero.name.toLowerCase() === heroName && _hero.powerstats[attribute] === attrValue;
-//           });
-//         break;
-        
-//         case '>':
-//           filteredHeroes= heroes.filter((_hero)=>{
-//             _hero.name= _hero.name.toLowerCase();
-//             return _hero.name.toLowerCase() === heroName && _hero.powerstats[attribute] > attrValue;
-//           });
-//         break;
-        
-//         case '<':
-//           filteredHeroes= heroes.filter((_hero)=>{
-//             return  _hero.name.toLowerCase() === heroName && _hero.powerstats[attribute] < attrValue;
-//           });
-//         break;
-//       }
-
-//     }
-//     else if(heroName){
-//         filteredHeroes= this.heroArray.filter((_hero)=>{
-//         return _hero.name.toLowerCase() === heroName;
-//       });
-
-//     }
-//     else if(attrValue){
-//       switch(comparison){
-//         case '===':
-//           filteredHeroes= this.heroArray.filter((_hero)=>{
-//             return _hero.powerstats[attribute] === attrValue;
-//           });
-//         break;
-        
-//         case '>':
-//           filteredHeroes= this.heroArray.filter((_hero)=>{
-//             return _hero.powerstats[attribute] > attrValue;
-//           });
-//         break;
-        
-//         case '<':
-//           filteredHeroes= this.heroArray.filter((_hero)=>{
-//             return  _hero.powerstats[attribute] < attrValue;
-//           });
-//         break;
-//       }
-//     }
-//     else{
-//       this.setHeroes(this.heroArray);
-//     }
-
-//     this.heroNameField.value= "";
-//     this.clearPage();
-//     this.setHeroes(filteredHeroes);
-// }
-
 //aplicar filtros de busca por sexo
 applyFilterHeroes() {  
   let filteredHeroes= []; 
-  // let attrValue= Number(this.inputAttrNumber.value);
   let heroName= this.heroNameField.value.toLowerCase();
   let gender= this.container.querySelector("#attribute").value;
-  // let comparison= this.container.querySelector("#compare").value;
-
   
    if(heroName && gender){
-    console.log(gender);
-    console.log(heroName);
-    // filteredHeroes= this.heroArray.filter((_hero)=>{
-    // return _hero.appearance.gender === gender;
-  // });
+    filteredHeroes= this.heroArray.filter((_hero)=>{
+      return _hero.appearance.gender === gender && 
+             _hero.name.toLowerCase().includes(heroName);
+    });
   }
   
   else if(heroName){
@@ -251,12 +174,13 @@ heroTemplate (hero) {
 
 modalInfo(heroId){
 
+  if(!heroId) return null;
+
   //se o modal já existir, então ele será removido da página
   this.modalContainer && this.modalContainer.remove();
   
   let clickedHero= this.heroArray.filter(hero => hero.id === parseInt(heroId));
   let modalHero= clickedHero[0];
-  // console.log(modalHero);
   
   let modalHtml= `
     <div class="modal-container">
