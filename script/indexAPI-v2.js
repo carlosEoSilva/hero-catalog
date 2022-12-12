@@ -1,4 +1,3 @@
-// alert();
 class PaginaHerois {
   constructor (seletorContainer, url) {
     let _self = this;
@@ -68,8 +67,27 @@ applyFilterHeroes() {
   let filteredHeroes= []; 
   let heroName= this.heroNameField.value.toLowerCase();
   let gender= this.container.querySelector("#attribute").value;
+  let type= this.container.querySelector("#type").value;
   
-   if(heroName && gender){
+  if(heroName && gender && type){
+    filteredHeroes= this.heroArray.filter((_hero)=>{
+      return _hero.appearance.gender === gender &&
+             _hero.biography.alignment === type &&
+             _hero.name.toLowerCase().includes(heroName);
+    }); 
+  }
+  else if(gender && type){
+    filteredHeroes= this.heroArray.filter((_hero)=>{
+      return _hero.appearance.gender === gender &&
+             _hero.biography.alignment === type;
+    });
+  }
+  else if(type){
+    filteredHeroes= this.heroArray.filter((_hero)=>{
+      return _hero.biography.alignment === type;
+    });
+  }
+  else if(heroName && gender){
     filteredHeroes= this.heroArray.filter((_hero)=>{
       return _hero.appearance.gender === gender && 
              _hero.name.toLowerCase().includes(heroName);
@@ -111,15 +129,6 @@ setHeroes(_heroes) {
   _heroes.forEach((hero)=>{
       let html= this.heroTemplate(hero);
       this.heroesList.insertAdjacentHTML('beforeend', html);
-  })     
-}
-
-fsetHeroes(_heroes) {
-  _heroes.forEach((hero)=>{
-    if(hero.appearance.gender === "Female"){
-      let html= this.heroTemplate(hero);
-      this.heroesList.insertAdjacentHTML('beforeend', html);
-    }
   })     
 }
 
@@ -199,6 +208,13 @@ modalInfo(heroId){
 fillModalBiography(modalHero){
 
   let fontColor= modalHero.biography.alignment === "good" ? "green" : "red";
+  let gender= modalHero.appearance.gender;
+  let alignment= modalHero.biography.alignment;
+  let classification= "HERÓI";
+
+  if(gender === "Male" && alignment === "bad") classification= "VILÃO"
+  else if(gender === "Female" && alignment === "good") classification= "HEROÍNA"
+  else if(gender === "Female" && alignment === "bad") classification= "VILÃ"
 
   return `
   <div class="modal-content">
@@ -208,7 +224,7 @@ fillModalBiography(modalHero){
 
     <div class="modal-body">
         <hr>
-        <p style="color: ${fontColor}"><strong>${modalHero.biography.alignment === "good" ? "HERÓI" : "VILÃO"}</strong></p>
+        <p style="color: ${fontColor}"><strong>${classification}</strong></p>
         <hr>
         <p><strong>Nome completo:</strong></p>
         <p style="color: ${fontColor}">${modalHero.biography.fullName}</p>
