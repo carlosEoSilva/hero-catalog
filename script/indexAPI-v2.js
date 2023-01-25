@@ -42,7 +42,7 @@ class PaginaHerois {
     //evento para abrir o modal
     this.heroesList.onclick= function(event){
       _self.modal.style.top = _self.modalPosition;
-      event.path[0].id ? _self.modalInfo(event.path[0].id) : _self.modalInfo(event.path[4].id);
+      _self.modalInfo(event.srcElement.id);
       _self.modal.show();
     }
 
